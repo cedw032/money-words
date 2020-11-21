@@ -58,8 +58,7 @@ const toWordsMeetsExpectations: (params: {
 const toMaybeWordsMeetsExpectations: (params: {
     input: number | string
     expected: string
-}) => void = ({ input, expected }) =>
-    expect(toMaybeWords(input)).toBe(expected)
+}) => void = ({ input, expected }) => expect(toMaybeWords(input)).toBe(expected)
 
 const inputNumbersToStrings: (params: {
     input: number

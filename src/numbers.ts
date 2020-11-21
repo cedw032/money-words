@@ -34,10 +34,12 @@ export const extractWholeNumber: (n: PositiveNumber) => WholeNumber = (n) =>
 export const extractTripleDigitNumber: (n: WholeNumber) => TripleDigitNumber = (
     n
 ) => (n % 1000) as TripleDigitNumber
-export const extractDoubleDigitNumber: (n: WholeNumber) => DoubleDigitNumber = (n) =>
-    (n % 100) as DoubleDigitNumber
-export const extractSingleDigitNumber: (n: WholeNumber) => SingleDigitNumber = (n) =>
-    (n % 10) as SingleDigitNumber
+export const extractDoubleDigitNumber: (n: WholeNumber) => DoubleDigitNumber = (
+    n
+) => (n % 100) as DoubleDigitNumber
+export const extractSingleDigitNumber: (n: WholeNumber) => SingleDigitNumber = (
+    n
+) => (n % 10) as SingleDigitNumber
 
 export const toHundreds: (n: TripleDigitNumber) => SingleDigitNumber = (n) =>
     Math.floor(n / 100) as SingleDigitNumber

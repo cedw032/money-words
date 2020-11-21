@@ -212,14 +212,18 @@ describe('extractTripleDigitNumber', () => {
 describe('extractDoubleDigitNumber', () => {
     it('returns the trailing two digits of a whole number', () =>
         extractDoubleDigitNumberTestData.forEach(([num, doubleDigits]) =>
-            expect(extractDoubleDigitNumber(num as WholeNumber)).toBe(doubleDigits)
+            expect(extractDoubleDigitNumber(num as WholeNumber)).toBe(
+                doubleDigits
+            )
         ))
 })
 
 describe('extractSingleDigitNumber', () => {
     it('returns the trailing digit of a whole number', () =>
         extractSingleDigitNumberTestData.forEach(([num, singleDigit]) =>
-            expect(extractSingleDigitNumber(num as WholeNumber)).toBe(singleDigit)
+            expect(extractSingleDigitNumber(num as WholeNumber)).toBe(
+                singleDigit
+            )
         ))
 })
 
