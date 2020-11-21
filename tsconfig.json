@@ -1,0 +1,16 @@
+{
+    "extends": "@tsconfig/node14/tsconfig.json",
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "outDir": "dist/"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
