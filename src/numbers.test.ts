@@ -122,8 +122,8 @@ describe('isRealNumber', () => {
         ))
 
     it('returns true if an unreal number is supplied', () =>
-        sampleOfRealNumbers.forEach((unrealNumber) =>
-            expect(isRealNumber(unrealNumber)).toBe(true)
+        sampleOfRealNumbers.forEach((realNumber) =>
+            expect(isRealNumber(realNumber)).toBe(true)
         ))
 })
 
@@ -188,8 +188,8 @@ describe('isTripleDigitNumber', () => {
         ))
 
     it('returns true if a a number with three digits or fewer is supplied', () =>
-        sampleOfTripleDigitNumbers.forEach((TripleDigitNumber) =>
-            expect(isTripleDigitNumber(TripleDigitNumber)).toBe(true)
+        sampleOfTripleDigitNumbers.forEach((tripleDigitNumber) =>
+            expect(isTripleDigitNumber(tripleDigitNumber)).toBe(true)
         ))
 })
 
@@ -202,24 +202,24 @@ describe('extractWholeNumber', () => {
 
 describe('extractTripleDigitNumber', () => {
     it('returns the trailing three digits of a whole number', () =>
-        extractTripleDigitNumberTestData.forEach(([num, threeDigits]) =>
+        extractTripleDigitNumberTestData.forEach(([num, tripleDigits]) =>
             expect(extractTripleDigitNumber(num as WholeNumber)).toBe(
-                threeDigits
+                tripleDigits
             )
         ))
 })
 
 describe('extractDoubleDigitNumber', () => {
     it('returns the trailing two digits of a whole number', () =>
-        extractDoubleDigitNumberTestData.forEach(([num, twoDigits]) =>
-            expect(extractDoubleDigitNumber(num as WholeNumber)).toBe(twoDigits)
+        extractDoubleDigitNumberTestData.forEach(([num, doubleDigits]) =>
+            expect(extractDoubleDigitNumber(num as WholeNumber)).toBe(doubleDigits)
         ))
 })
 
 describe('extractSingleDigitNumber', () => {
     it('returns the trailing digit of a whole number', () =>
-        extractSingleDigitNumberTestData.forEach(([num, twoDigits]) =>
-            expect(extractSingleDigitNumber(num as WholeNumber)).toBe(twoDigits)
+        extractSingleDigitNumberTestData.forEach(([num, singleDigit]) =>
+            expect(extractSingleDigitNumber(num as WholeNumber)).toBe(singleDigit)
         ))
 })
 
