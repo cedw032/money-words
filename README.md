@@ -73,7 +73,7 @@ if (money !== undefined)
 Where:
 ```
 import type { ValidMoney } from './money'
-import type { toWords } from './moneyWords'
+import { toWords } from './moneyWords'
 
 function continueProcessWitMoney(money: ValidMoney): void {
    console.log(toWords(money))
