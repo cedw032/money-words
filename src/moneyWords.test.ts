@@ -1,6 +1,13 @@
 import { ValidMoney } from './money'
 import { toWords, toMaybeWords } from './moneyWords'
 
+const specificationTestData = [
+    { input: 0, expected: 'zero dollars' },
+    { input: 0.12, expected: 'twelve cents' },
+    { input: 10.55, expected: 'ten dollars and fifty five cents' },
+    { input: 120, expected: 'one hundred and twenty dollars' },
+]
+
 const testDataForValuesWithDollarsOnly = [
     { input: 3, expected: 'three dollars' },
     { input: 11, expected: 'eleven dollars' },
@@ -69,6 +76,9 @@ const inputNumbersToStrings: (params: {
 })
 
 describe('toWords', () => {
+    it('meets specification', () =>
+        specificationTestData.forEach(toWordsMeetsExpectations))
+
     it('displays words for dollars only for dollar only numbers', () =>
         testDataForValuesWithDollarsOnly.forEach(toWordsMeetsExpectations))
     it('displays words for cents only for cents only numbers', () =>
@@ -78,6 +88,9 @@ describe('toWords', () => {
 })
 
 describe('toMaybeWords', () => {
+    it('meets specification', () =>
+        specificationTestData.forEach(toMaybeWordsMeetsExpectations))
+
     it('displays words for dollars only for dollar only numbers', () =>
         testDataForValuesWithDollarsOnly.forEach(toMaybeWordsMeetsExpectations))
     it('displays words for cents only for cents only numbers', () =>
