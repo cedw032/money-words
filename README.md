@@ -10,7 +10,7 @@
 
 ## Recommended usage
 ### toMaybeWords
-```
+```TypeScript
 import { toMaybeWords } from './moneyWords'
 
 const moneyNumber = 342.23
@@ -31,7 +31,7 @@ This may cause issues if you are using the value with functions that are not wel
 It also allows the failure to go unnoticed further into the code and may make it harder to handle.
 
 ### toWords - with gate
-```
+```TypeScript
 import { toWords } from './moneyWords'
 import { isValidMoney } from './money'
 
@@ -43,7 +43,7 @@ const moneyWords: string = isValidMoney(moneyNumber)
   : 'Could not convert money value to words because it was invalid'
 
 const notMoneyWords: string = isValidMoney(notMoneyNumber) 
-  ? toWords(moneyNumber) 
+  ? toWords(notMoneyNumber) 
   : 'Could not convert money value to words because it was invalid'
   
 console.log(moneyWords) // three hundred and forty two dollars and twenty three cents
@@ -54,7 +54,7 @@ Note that the type checker will report an error if `moneyNumber` or `notMoneyNum
 without checking `isValidMoney` first.
 
 ### toWords - with data constructor
-```
+```TypeScript
 import { toValidMoney } from './money'
 import { 
   getUserInput, 
@@ -71,9 +71,9 @@ if (money !== undefined)
 }
 ```
 Where:
-```
+```TypeScript
 import type { ValidMoney } from './money'
-import type { toWords } from './moneyWords'
+import { toWords } from './moneyWords'
 
 function continueProcessWitMoney(money: ValidMoney): void {
    console.log(toWords(money))
