@@ -97,3 +97,9 @@ the system (Or at least before it is passed to these methods).
 - Provide a runtime safe implementation of `toWords` and `toMaybeWords`
 - Extend the upper limit to include larger numbers like [these](https://simple.wikipedia.org/wiki/Names_for_large_numbers)
 - Perhaps allow configuration to support other languages and currencies
+### Learnings
+- The pattern of making phantom type field names unique allows the type to be extended by other more specific types which provide tighter guarantees.
+- A lack of type checking around string literal templates allowed one error to slip through to testing.  `elslint` provides a rule that may address this in restricting the types that can be used as template elements.
+- The typescript compiler currently allows types to implicitly resolve to the `never` type.  This prevented two errors from being picked up by the type checker before testing.  Once this type issue was resolved both errors were reported by the type checker. Adding a rule to 'prevent implicit never' would have prevented these errors from getting through to testing.
+### Later learnings
+- Named functions should be preferred to anonymous functions.
