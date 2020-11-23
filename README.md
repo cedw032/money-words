@@ -10,7 +10,7 @@
 
 ## Recommended usage
 ### toMaybeWords
-```
+```TypeScript
 import { toMaybeWords } from './moneyWords'
 
 const moneyNumber = 342.23
