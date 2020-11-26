@@ -25,14 +25,18 @@ export function isValidMoney(n: number): n is ValidMoney {
     )
 }
 
-export const toValidMoney: (n: number) => ValidMoney | undefined = (n) =>
-    isValidMoney(n) ? n : undefined
+export function toValidMoney(n: number): ValidMoney | undefined {
+    return isValidMoney(n) ? n : undefined
+}
 
-export const hasDollars: (m: ValidMoney) => boolean = (m) =>
-    extractDollars(m) !== 0
-export const hasCents: (m: ValidMoney) => boolean = (m) => extractCents(m) !== 0
+export function hasDollars(m: ValidMoney): boolean {
+    return extractDollars(m) !== 0
+}
+export function hasCents(m: ValidMoney): boolean {
+    return extractCents(m) !== 0
+}
 
-export const extractCents: (m: ValidMoney) => Cents = (m) => {
+export function extractCents(m: ValidMoney): Cents {
     const totalMoneyAsCents = m * 100
     if (isPositiveNumber(totalMoneyAsCents)) {
         return extractDoubleDigitNumber(
@@ -43,5 +47,6 @@ export const extractCents: (m: ValidMoney) => Cents = (m) => {
         'This error should only happen if the validation has been bypassed via casting'
     )
 }
-export const extractDollars: (m: ValidMoney) => Dollars = (m) =>
-    extractWholeNumber(m) as Dollars
+export function extractDollars(m: ValidMoney): Dollars {
+    return extractWholeNumber(m) as Dollars
+}

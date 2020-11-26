@@ -1,6 +1,16 @@
 import { ValidMoney } from './money'
 import { toWords, toMaybeWords } from './moneyWords'
 
+type StringTestCase = {
+    input: string
+    expected: string
+}
+
+type NumberTestCase = {
+    input: number
+    expected: string
+}
+
 const specificationTestData = [
     { input: 0, expected: 'zero dollars' },
     { input: 0.12, expected: 'twelve cents' },
@@ -56,24 +66,26 @@ const invalidInputTestData = [
     Infinity,
 ]
 
-const toWordsMeetsExpectations: (params: {
-    input: number
-    expected: string
-}) => void = ({ input, expected }) =>
-    expect(toWords(input as ValidMoney)).toBe(expected)
+function toWordsMeetsExpectations({ input, expected }: NumberTestCase): void {
+    return expect(toWords(input as ValidMoney)).toBe(expected)
+}
 
-const toMaybeWordsMeetsExpectations: (params: {
-    input: number | string
-    expected: string
-}) => void = ({ input, expected }) => expect(toMaybeWords(input)).toBe(expected)
-
-const inputNumbersToStrings: (params: {
-    input: number
-    expected: string
-}) => { input: string; expected: string } = ({ input, expected }) => ({
-    input: `${input}`,
+function toMaybeWordsMeetsExpectations({
+    input,
     expected,
-})
+}: NumberTestCase | StringTestCase): void {
+    return expect(toMaybeWords(input)).toBe(expected)
+}
+
+function numberToStringTestCase({
+    input,
+    expected,
+}: NumberTestCase): StringTestCase {
+    return {
+        input: `${input}`,
+        expected,
+    }
+}
 
 describe('toWords', () => {
     it('meets specification', () =>
@@ -102,15 +114,15 @@ describe('toMaybeWords', () => {
 
     it('displays words for dollars only for dollar only strings', () =>
         testDataForValuesWithDollarsOnly
-            .map(inputNumbersToStrings)
+            .map(numberToStringTestCase)
             .forEach(toMaybeWordsMeetsExpectations))
     it('displays words for cents only for cents only strings', () =>
         testDataForValuesWithCentsOnly
-            .map(inputNumbersToStrings)
+            .map(numberToStringTestCase)
             .forEach(toMaybeWordsMeetsExpectations))
     it('displays words for cents and dollars for strings with cents and dollars', () =>
         testDataForValuesWithDollarsAndCents
-            .map(inputNumbersToStrings)
+            .map(numberToStringTestCase)
             .forEach(toMaybeWordsMeetsExpectations))
 
     it('returns undefined for invalid input', () =>

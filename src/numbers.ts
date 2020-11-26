@@ -15,6 +15,7 @@ export type DoubleDigitNumber = TripleDigitNumber & {
 export type SingleDigitNumber = DoubleDigitNumber & {
     readonly __SingleDigitNumber: unique symbol
 }
+export type PrecisionValue = 0 | 1 | 2 | 3
 
 export function isRealNumber(n: number): n is RealNumber {
     return n - n === 0
@@ -29,27 +30,30 @@ export function isTripleDigitNumber(n: number): n is TripleDigitNumber {
     return isWholeNumber(n) && extractTripleDigitNumber(n) === n
 }
 
-export const extractWholeNumber: (n: PositiveNumber) => WholeNumber = (n) =>
-    Math.floor(n) as WholeNumber
-export const extractTripleDigitNumber: (n: WholeNumber) => TripleDigitNumber = (
-    n
-) => (n % 1000) as TripleDigitNumber
-export const extractDoubleDigitNumber: (n: WholeNumber) => DoubleDigitNumber = (
-    n
-) => (n % 100) as DoubleDigitNumber
-export const extractSingleDigitNumber: (n: WholeNumber) => SingleDigitNumber = (
-    n
-) => (n % 10) as SingleDigitNumber
+export function extractWholeNumber(n: PositiveNumber): WholeNumber {
+    return Math.floor(n) as WholeNumber
+}
+export function extractTripleDigitNumber(n: WholeNumber): TripleDigitNumber {
+    return (n % 1000) as TripleDigitNumber
+}
+export function extractDoubleDigitNumber(n: WholeNumber): DoubleDigitNumber {
+    return (n % 100) as DoubleDigitNumber
+}
+export function extractSingleDigitNumber(n: WholeNumber): SingleDigitNumber {
+    return (n % 10) as SingleDigitNumber
+}
 
-export const toHundreds: (n: TripleDigitNumber) => SingleDigitNumber = (n) =>
-    Math.floor(n / 100) as SingleDigitNumber
-export const toTens: (n: DoubleDigitNumber) => SingleDigitNumber = (n) =>
-    Math.floor(n / 10) as SingleDigitNumber
+export function toHundreds(n: TripleDigitNumber): SingleDigitNumber {
+    return Math.floor(n / 100) as SingleDigitNumber
+}
+export function toTens(n: DoubleDigitNumber): SingleDigitNumber {
+    return Math.floor(n / 10) as SingleDigitNumber
+}
 
-export const isCorrectPrecision: (
+export function isCorrectPrecision(
     n: number,
-    precision: 0 | 1 | 2 | 3
-) => boolean = (n, precision) => {
+    precision: PrecisionValue
+): boolean {
     if (!isRealNumber(n)) {
         return false
     }

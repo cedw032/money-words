@@ -3,6 +3,7 @@ import type {
     WholeNumber,
     TripleDigitNumber,
     DoubleDigitNumber,
+    PrecisionValue,
 } from './numbers'
 import {
     isRealNumber,
@@ -245,7 +246,7 @@ describe('isCorrectPrecision', () => {
     it('returns false if the input n has more decimal places than the precision value provided', () =>
         isCorrectPrecisionTestData.forEach(([n, precision, expected]) =>
             expect(
-                isCorrectPrecision(n as number, precision as 0 | 1 | 2 | 3)
+                isCorrectPrecision(n as number, precision as PrecisionValue)
             ).toBe(expected)
         ))
 })

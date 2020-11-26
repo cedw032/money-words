@@ -68,11 +68,11 @@ const randomTestData = [
     { input: 808, expected: 'eight hundred and eight' },
 ]
 
-const toWordsMeetsExpectations: (params: {
-    input: number
-    expected: string
-}) => void = ({ input, expected }) =>
-    expect(toWords(input as TripleDigitNumber)).toBe(expected)
+type TestCase = {input: number, expected: string}
+
+function toWordsMeetsExpectations({ input, expected }: TestCase): void {
+    return expect(toWords(input as TripleDigitNumber)).toBe(expected)
+}
 
 describe('toWords', () => {
     it('converts to words correctly for zero', () => {

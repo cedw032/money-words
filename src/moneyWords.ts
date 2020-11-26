@@ -10,14 +10,12 @@ import { toWords as numberToWords } from './numberWords'
 
 type MoneyWords = string & { readonly __MoneyWords: unique symbol }
 
-export const toMaybeWords: (v: string | number) => MoneyWords | undefined = (
-    v
-) => {
+export function toMaybeWords(v: string | number): MoneyWords | undefined {
     const n = +v
     return (v !== '' && isValidMoney(n) && toWords(n)) || undefined
 }
 
-export const toWords: (m: ValidMoney) => MoneyWords = (m) => {
+export function toWords(m: ValidMoney): MoneyWords {
     const hasDollars = moneyHasDollars(m)
     const hasCents = moneyHasCents(m)
 
@@ -28,7 +26,9 @@ export const toWords: (m: ValidMoney) => MoneyWords = (m) => {
         : extractDollarWords(m)
 }
 
-const extractDollarWords: (m: ValidMoney) => MoneyWords = (m) =>
-    `${numberToWords(extractDollars(m))} dollars` as MoneyWords
-const extractCentWords: (m: ValidMoney) => MoneyWords = (m) =>
-    `${numberToWords(extractCents(m))} cents` as MoneyWords
+function extractDollarWords(m: ValidMoney): MoneyWords {
+    return `${numberToWords(extractDollars(m))} dollars` as MoneyWords
+}
+function extractCentWords(m: ValidMoney): MoneyWords {
+    return `${numberToWords(extractCents(m))} cents` as MoneyWords
+}

@@ -50,7 +50,7 @@ const tensWordList = [
     'ninety',
 ]
 
-export const toWords: (n: TripleDigitNumber) => string = (n) => {
+export function toWords(n: TripleDigitNumber): string {
     const hundredsWords = extractHundredsWords(n)
     const twoDigitWords = extractTwoDigitWords(n)
 
@@ -61,16 +61,14 @@ export const toWords: (n: TripleDigitNumber) => string = (n) => {
         : `${hundredsWords} and ${twoDigitWords}`
 }
 
-const extractHundredsWords: (n: TripleDigitNumber) => string | undefined = (
-    n
-) => {
+function extractHundredsWords(n: TripleDigitNumber): string | undefined {
     const hundreds = toHundreds(n)
     return hundreds === (0 as SingleDigitNumber)
         ? undefined
         : `${toUnitWord(hundreds)} hundred`
 }
 
-const extractTwoDigitWords: (n: TripleDigitNumber) => string = (n) => {
+function extractTwoDigitWords(n: TripleDigitNumber): string {
     const twoDigits = extractDoubleDigitNumber(n)
     const tens = toTens(twoDigits)
     const ones = extractSingleDigitNumber(twoDigits)
@@ -84,14 +82,23 @@ const extractTwoDigitWords: (n: TripleDigitNumber) => string = (n) => {
         : `${extractTensWord(twoDigits)} ${extractUnitWord(twoDigits)}`
 }
 
-const extractTensWord: (n: DoubleDigitNumber) => string = (n) =>
-    toTensWord(toTens(n))
-const toTensWord: (u: SingleDigitNumber) => string = (u) => tensWordList[u]
+function extractTensWord(n: DoubleDigitNumber): string {
+    return toTensWord(toTens(n))
+}
+function toTensWord(u: SingleDigitNumber): string {
+    return tensWordList[u]
+}
 
-const extractTeenWord: (n: DoubleDigitNumber) => string = (n) =>
-    toTeenWord(extractSingleDigitNumber(n))
-const toTeenWord: (u: SingleDigitNumber) => string = (u) => teenWordList[u]
+function extractTeenWord(n: DoubleDigitNumber): string {
+    return toTeenWord(extractSingleDigitNumber(n))
+}
+function toTeenWord(u: SingleDigitNumber): string {
+    return teenWordList[u]
+}
 
-const extractUnitWord: (n: WholeNumber) => string = (n) =>
-    toUnitWord(extractSingleDigitNumber(n))
-const toUnitWord: (u: SingleDigitNumber) => string = (u) => unitWordList[u]
+function extractUnitWord(n: WholeNumber): string {
+    return toUnitWord(extractSingleDigitNumber(n))
+}
+function toUnitWord(u: SingleDigitNumber): string {
+    return unitWordList[u]
+}
