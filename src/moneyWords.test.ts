@@ -102,7 +102,7 @@ const testDataForValuesWithCentsOnly = [
 
 const testDataForValuesWithDollarsAndCents = [
     { input: 3.6, expected: 'three dollars and sixty cents' },
-    { input: 11.13, expected: 'eleven dollars and thirteen cents' },
+    { input: 1.13, expected: 'one dollars and thirteen cents' },
     { input: 40.04, expected: 'forty dollars and four cents' },
     { input: 97.87, expected: 'ninety seven dollars and eighty seven cents' },
     { input: 400.6, expected: 'four hundred dollars and sixty cents' },

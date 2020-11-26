@@ -7,7 +7,6 @@ import {
     isPositiveNumber,
     isCorrectPrecision,
     isTripleDigitNumber,
-    extractDoubleDigitNumber,
     extractWholeNumber,
 } from './numbers'
 
@@ -36,17 +35,14 @@ export function hasCents(m: ValidMoney): boolean {
     return extractCents(m) !== 0
 }
 
-export function extractCents(m: ValidMoney): Cents {
-    const totalMoneyAsCents = m * 100
-    if (isPositiveNumber(totalMoneyAsCents)) {
-        return extractDoubleDigitNumber(
-            extractWholeNumber(totalMoneyAsCents)
-        ) as Cents
-    }
-    throw new Error(
-        'This error should only happen if the validation has been bypassed via casting'
-    )
-}
 export function extractDollars(m: ValidMoney): Dollars {
     return extractWholeNumber(m) as Dollars
+}
+export function extractCents(m: ValidMoney): Cents {
+    const maybeCents = `${m}`.split('.')[1]
+    return (maybeCents === undefined
+        ? 0
+        : maybeCents.length === 1
+        ? +maybeCents * 10
+        : +maybeCents) as Cents
 }
