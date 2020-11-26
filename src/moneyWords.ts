@@ -27,8 +27,16 @@ export function toWords(m: ValidMoney): MoneyWords {
 }
 
 function extractDollarWords(m: ValidMoney): MoneyWords {
-    return `${numberToWords(extractDollars(m))} dollars` as MoneyWords
+    const dollars = extractDollars(m)
+    const unit = isPlural(dollars) ? 'dollars' : 'dollar'
+    return `${numberToWords(dollars)} ${unit}` as MoneyWords
 }
 function extractCentWords(m: ValidMoney): MoneyWords {
-    return `${numberToWords(extractCents(m))} cents` as MoneyWords
+    const cents = extractCents(m)
+    const unit = isPlural(cents) ? 'cents' : 'cent'
+    return `${numberToWords(extractCents(m))} ${unit}` as MoneyWords
+}
+
+function isPlural(n: number): boolean {
+    return n !== 1
 }

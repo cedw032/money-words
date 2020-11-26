@@ -42,6 +42,8 @@ describe('toWords', () => {
         testDataForValuesWithCentsOnly.forEach(toWordsMeetsExpectations))
     it('displays words for cents and dollars only for numbers with cents and dollars', () =>
         testDataForValuesWithDollarsAndCents.forEach(toWordsMeetsExpectations))
+    it('displays words for singular dollars and cents correctly', () =>
+        testDataForSingularDollarsAndCents.forEach(toWordsMeetsExpectations))
 })
 
 describe('toMaybeWords', () => {
@@ -56,6 +58,10 @@ describe('toMaybeWords', () => {
         testDataForValuesWithDollarsAndCents.forEach(
             toMaybeWordsMeetsExpectations
         ))
+    it('displays words for singular dollars and cents correctly', () =>
+        testDataForSingularDollarsAndCents.forEach(
+            toMaybeWordsMeetsExpectations
+        ))
 
     it('displays words for dollars only for dollar only strings', () =>
         testDataForValuesWithDollarsOnly
@@ -67,6 +73,10 @@ describe('toMaybeWords', () => {
             .forEach(toMaybeWordsMeetsExpectations))
     it('displays words for cents and dollars for strings with cents and dollars', () =>
         testDataForValuesWithDollarsAndCents
+            .map(numberToStringTestCase)
+            .forEach(toMaybeWordsMeetsExpectations))
+    it('displays words for singular dollars and cents correctly', () =>
+        testDataForSingularDollarsAndCents
             .map(numberToStringTestCase)
             .forEach(toMaybeWordsMeetsExpectations))
 
@@ -102,7 +112,7 @@ const testDataForValuesWithCentsOnly = [
 
 const testDataForValuesWithDollarsAndCents = [
     { input: 3.6, expected: 'three dollars and sixty cents' },
-    { input: 1.13, expected: 'one dollars and thirteen cents' },
+    { input: 1.13, expected: 'one dollar and thirteen cents' },
     { input: 40.04, expected: 'forty dollars and four cents' },
     { input: 97.87, expected: 'ninety seven dollars and eighty seven cents' },
     { input: 400.6, expected: 'four hundred dollars and sixty cents' },
@@ -113,6 +123,23 @@ const testDataForValuesWithDollarsAndCents = [
     {
         input: 720.67,
         expected: 'seven hundred and twenty dollars and sixty seven cents',
+    },
+]
+
+const testDataForSingularDollarsAndCents = [
+    { input: 1.01, expected: 'one dollar and one cent' },
+    { input: 1.6, expected: 'one dollar and sixty cents' },
+    { input: 1.13, expected: 'one dollar and thirteen cents' },
+    { input: 1.4, expected: 'one dollar and forty cents' },
+    { input: 97.01, expected: 'ninety seven dollars and one cent' },
+    { input: 400.01, expected: 'four hundred dollars and one cent' },
+    {
+        input: 512.01,
+        expected: 'five hundred and twelve dollars and one cent',
+    },
+    {
+        input: 720.01,
+        expected: 'seven hundred and twenty dollars and one cent',
     },
 ]
 
