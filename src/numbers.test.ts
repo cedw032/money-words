@@ -19,103 +19,6 @@ import {
     isCorrectPrecision,
 } from './numbers'
 
-const unrealNumbers = [NaN, -Infinity, Infinity]
-const sampleOfRealNumbers = [
-    0,
-    -18797,
-    987987,
-    -0.45435,
-    0.343243,
-    3243.56456,
-    -54343.654,
-]
-
-const sampleOfNegativeNumbers = [-18797, -0.45435, -54343.654]
-const sampleOfPositiveNumbers = [0, 987987, 0.343243, 3243.56456]
-
-const sampleOfNotWholeNumbers = [0.343243, 3243.56456]
-const sampleOfWholeNumbers = [0, 43, 764543]
-
-const sampleOfNotTripleDigitNumbers = [7654, 87654567, 4534536, 1000]
-const sampleOfTripleDigitNumbers = [0, 5, 10, 543, 457]
-
-const extractWholeNumberTestData = [
-    [234.45, 234],
-    [34000, 34000],
-    [54.5, 54],
-    [326.8989, 326],
-    [0, 0],
-]
-
-const extractTripleDigitNumberTestData = [
-    [76543787564, 564],
-    [3454, 454],
-    [987, 987],
-    [18, 18],
-    [0, 0],
-    [5, 5],
-]
-
-const extractDoubleDigitNumberTestData = [
-    [76543787564, 64],
-    [3454, 54],
-    [987, 87],
-    [18, 18],
-    [0, 0],
-    [5, 5],
-]
-
-const extractSingleDigitNumberTestData = [
-    [76543787564, 4],
-    [3454, 4],
-    [987, 7],
-    [18, 8],
-    [0, 0],
-    [5, 5],
-]
-
-const toHundredsTestData = [
-    [891, 8],
-    [453, 4],
-    [67, 0],
-    [8, 0],
-    [0, 0],
-]
-
-const toTensTestData = [
-    [54, 5],
-    [86, 8],
-    [3, 0],
-    [0, 0],
-]
-
-const isCorrectPrecisionTestData = [
-    [3, 0, true],
-    [30, 1, true],
-    [4, 2, true],
-    [0, 3, true],
-
-    [0.5, 0, false],
-    [52.5, 1, true],
-    [0.5, 2, true],
-    [3.5, 3, true],
-
-    [3.23, 0, false],
-    [30.23, 1, false],
-    [4.23, 2, true],
-    [0.23, 3, true],
-
-    [3.898, 0, false],
-    [30.898, 1, false],
-    [4.898, 2, false],
-    [0.898, 3, true],
-
-    [3.1212, 0, false],
-    [30.1212, 1, false],
-    [4.1212, 2, false],
-    [0.1212, 3, false],
-]
-
 describe('isRealNumber', () => {
     it('returns false if an unreal number is supplied', () =>
         unrealNumbers.forEach((unrealNumber) =>
@@ -250,3 +153,100 @@ describe('isCorrectPrecision', () => {
             ).toBe(expected)
         ))
 })
+
+const unrealNumbers = [NaN, -Infinity, Infinity]
+const sampleOfRealNumbers = [
+    0,
+    -18797,
+    987987,
+    -0.45435,
+    0.343243,
+    3243.56456,
+    -54343.654,
+]
+
+const sampleOfNegativeNumbers = [-18797, -0.45435, -54343.654]
+const sampleOfPositiveNumbers = [0, 987987, 0.343243, 3243.56456]
+
+const sampleOfNotWholeNumbers = [0.343243, 3243.56456]
+const sampleOfWholeNumbers = [0, 43, 764543]
+
+const sampleOfNotTripleDigitNumbers = [7654, 87654567, 4534536, 1000]
+const sampleOfTripleDigitNumbers = [0, 5, 10, 543, 457]
+
+const extractWholeNumberTestData = [
+    [234.45, 234],
+    [34000, 34000],
+    [54.5, 54],
+    [326.8989, 326],
+    [0, 0],
+]
+
+const extractTripleDigitNumberTestData = [
+    [76543787564, 564],
+    [3454, 454],
+    [987, 987],
+    [18, 18],
+    [0, 0],
+    [5, 5],
+]
+
+const extractDoubleDigitNumberTestData = [
+    [76543787564, 64],
+    [3454, 54],
+    [987, 87],
+    [18, 18],
+    [0, 0],
+    [5, 5],
+]
+
+const extractSingleDigitNumberTestData = [
+    [76543787564, 4],
+    [3454, 4],
+    [987, 7],
+    [18, 8],
+    [0, 0],
+    [5, 5],
+]
+
+const toHundredsTestData = [
+    [891, 8],
+    [453, 4],
+    [67, 0],
+    [8, 0],
+    [0, 0],
+]
+
+const toTensTestData = [
+    [54, 5],
+    [86, 8],
+    [3, 0],
+    [0, 0],
+]
+
+const isCorrectPrecisionTestData = [
+    [3, 0, true],
+    [30, 1, true],
+    [4, 2, true],
+    [0, 3, true],
+
+    [0.5, 0, false],
+    [52.5, 1, true],
+    [0.5, 2, true],
+    [3.5, 3, true],
+
+    [3.23, 0, false],
+    [30.23, 1, false],
+    [4.23, 2, true],
+    [0.23, 3, true],
+
+    [3.898, 0, false],
+    [30.898, 1, false],
+    [4.898, 2, false],
+    [0.898, 3, true],
+
+    [3.1212, 0, false],
+    [30.1212, 1, false],
+    [4.1212, 2, false],
+    [0.1212, 3, false],
+]

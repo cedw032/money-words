@@ -1,6 +1,32 @@
 import type { TripleDigitNumber } from './numbers'
 import { toWords } from './numberWords'
 
+type TestCase = { input: number; expected: string }
+
+describe('toWords', () => {
+    it('converts to words correctly for zero', () => {
+        expect(toWords(0 as TripleDigitNumber)).toBe('zero')
+    })
+
+    it('converts to words correctly for natural numbers under twenty', () =>
+        testDataForNumbersUnderTwenty.forEach(toWordsMeetsExpectations))
+
+    it('converts to words correctly for round tens under one hundred', () =>
+        testDataForRoundTensUnderOneHundred.forEach(toWordsMeetsExpectations))
+
+    it('converts to words correctly for round hundreds under one thousand', () =>
+        testDataForRoundHundredsUnderOneThousand.forEach(
+            toWordsMeetsExpectations
+        ))
+
+    it('converts an arbitrarily selected selection of values as expected', () =>
+        randomTestData.forEach(toWordsMeetsExpectations))
+})
+
+function toWordsMeetsExpectations({ input, expected }: TestCase): void {
+    return expect(toWords(input as TripleDigitNumber)).toBe(expected)
+}
+
 const testDataForNumbersUnderTwenty = [
     { input: 1, expected: 'one' },
     { input: 2, expected: 'two' },
@@ -67,29 +93,3 @@ const randomTestData = [
     { input: 604, expected: 'six hundred and four' },
     { input: 808, expected: 'eight hundred and eight' },
 ]
-
-type TestCase = {input: number, expected: string}
-
-function toWordsMeetsExpectations({ input, expected }: TestCase): void {
-    return expect(toWords(input as TripleDigitNumber)).toBe(expected)
-}
-
-describe('toWords', () => {
-    it('converts to words correctly for zero', () => {
-        expect(toWords(0 as TripleDigitNumber)).toBe('zero')
-    })
-
-    it('converts to words correctly for natural numbers under twenty', () =>
-        testDataForNumbersUnderTwenty.forEach(toWordsMeetsExpectations))
-
-    it('converts to words correctly for round tens under one hundred', () =>
-        testDataForRoundTensUnderOneHundred.forEach(toWordsMeetsExpectations))
-
-    it('converts to words correctly for round hundreds under one thousand', () =>
-        testDataForRoundHundredsUnderOneThousand.forEach(
-            toWordsMeetsExpectations
-        ))
-
-    it('converts an arbitrarily selected selection of values as expected', () =>
-        randomTestData.forEach(toWordsMeetsExpectations))
-})

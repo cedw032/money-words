@@ -11,45 +11,6 @@ import {
     extractSingleDigitNumber,
 } from './numbers'
 
-const unitWordList = [
-    'zero',
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-]
-
-const teenWordList = [
-    'ten',
-    'eleven',
-    'twelve',
-    'thirteen',
-    'fourteen',
-    'fifteen',
-    'sixteen',
-    'seventeen',
-    'eighteen',
-    'nineteen',
-]
-
-const tensWordList = [
-    '',
-    '',
-    'twenty',
-    'thirty',
-    'forty',
-    'fifty',
-    'sixty',
-    'seventy',
-    'eighty',
-    'ninety',
-]
-
 export function toWords(n: TripleDigitNumber): string {
     const hundredsWords = extractHundredsWords(n)
     const twoDigitWords = extractTwoDigitWords(n)
@@ -102,3 +63,42 @@ function extractUnitWord(n: WholeNumber): string {
 function toUnitWord(u: SingleDigitNumber): string {
     return unitWordList[u]
 }
+
+const unitWordList = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+]
+
+const teenWordList = [
+    'ten',
+    'eleven',
+    'twelve',
+    'thirteen',
+    'fourteen',
+    'fifteen',
+    'sixteen',
+    'seventeen',
+    'eighteen',
+    'nineteen',
+]
+
+const tensWordList = [
+    '',
+    '',
+    'twenty',
+    'thirty',
+    'forty',
+    'fifty',
+    'sixty',
+    'seventy',
+    'eighty',
+    'ninety',
+]

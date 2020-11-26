@@ -8,37 +8,6 @@ import {
     extractDollars,
 } from './money'
 
-const unrealNumbers = [NaN, -Infinity, Infinity]
-const sampleOfNegativeNumbers = [-1, -8.5, -400, -0.505, -10500]
-const sampleOfOverlyPreciseNumbers = [1.0607, 0.0001, 1000.065, -800.099]
-const sampleOfNumbersWhichAreTooLarge = [1000, 1010, 40000.89, 6570.909]
-const sampleOfNumbersWhichAreValidMoney = [
-    0.5,
-    1,
-    30.5,
-    450.56,
-    999.99,
-    6,
-    80.08,
-    724,
-]
-
-const sampleOfMoneyWithCents = [
-    [0.55, 55],
-    [45.76, 76],
-    [960.21, 21],
-]
-
-const sampleOfMoneyWithoutCents = [0, 45, 960]
-
-const sampleOfMoneyWithDollars = [
-    [453.64, 453],
-    [100, 100],
-    [863.09, 863],
-]
-
-const sampleOfMoneyWithoutDollars = [0.65, 0, 0.99]
-
 describe('toValidMoney', () => {
     it('returns undefined when provided with unreal numbers', () => {
         unrealNumbers.forEach((unreal) =>
@@ -150,3 +119,34 @@ describe('extractDollars', () => {
             expect(extractDollars(withDollars as ValidMoney)).toBe(dollars)
         ))
 })
+
+const unrealNumbers = [NaN, -Infinity, Infinity]
+const sampleOfNegativeNumbers = [-1, -8.5, -400, -0.505, -10500]
+const sampleOfOverlyPreciseNumbers = [1.0607, 0.0001, 1000.065, -800.099]
+const sampleOfNumbersWhichAreTooLarge = [1000, 1010, 40000.89, 6570.909]
+const sampleOfNumbersWhichAreValidMoney = [
+    0.5,
+    1,
+    30.5,
+    450.56,
+    999.99,
+    6,
+    80.08,
+    724,
+]
+
+const sampleOfMoneyWithCents = [
+    [0.55, 55],
+    [45.76, 76],
+    [960.21, 21],
+]
+
+const sampleOfMoneyWithoutCents = [0, 45, 960]
+
+const sampleOfMoneyWithDollars = [
+    [453.64, 453],
+    [100, 100],
+    [863.09, 863],
+]
+
+const sampleOfMoneyWithoutDollars = [0.65, 0, 0.99]

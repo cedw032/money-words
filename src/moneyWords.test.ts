@@ -11,61 +11,6 @@ type NumberTestCase = {
     expected: string
 }
 
-const specificationTestData = [
-    { input: 0, expected: 'zero dollars' },
-    { input: 0.12, expected: 'twelve cents' },
-    { input: 10.55, expected: 'ten dollars and fifty five cents' },
-    { input: 120, expected: 'one hundred and twenty dollars' },
-]
-
-const testDataForValuesWithDollarsOnly = [
-    { input: 3, expected: 'three dollars' },
-    { input: 11, expected: 'eleven dollars' },
-    { input: 40, expected: 'forty dollars' },
-    { input: 97, expected: 'ninety seven dollars' },
-    { input: 400, expected: 'four hundred dollars' },
-    { input: 512, expected: 'five hundred and twelve dollars' },
-    { input: 720, expected: 'seven hundred and twenty dollars' },
-]
-
-const testDataForValuesWithCentsOnly = [
-    { input: 0.6, expected: 'sixty cents' },
-    { input: 0.13, expected: 'thirteen cents' },
-    { input: 0.04, expected: 'four cents' },
-    { input: 0.87, expected: 'eighty seven cents' },
-]
-
-const testDataForValuesWithDollarsAndCents = [
-    { input: 3.6, expected: 'three dollars and sixty cents' },
-    { input: 11.13, expected: 'eleven dollars and thirteen cents' },
-    { input: 40.04, expected: 'forty dollars and four cents' },
-    { input: 97.87, expected: 'ninety seven dollars and eighty seven cents' },
-    { input: 400.6, expected: 'four hundred dollars and sixty cents' },
-    {
-        input: 512.13,
-        expected: 'five hundred and twelve dollars and thirteen cents',
-    },
-    {
-        input: 720.67,
-        expected: 'seven hundred and twenty dollars and sixty seven cents',
-    },
-]
-
-const invalidInputTestData = [
-    'not a number',
-    '',
-    '0.45454',
-    '1000',
-    '5345798',
-    1000,
-    45455,
-    0.453,
-    34.7676,
-    NaN,
-    -Infinity,
-    Infinity,
-]
-
 function toWordsMeetsExpectations({ input, expected }: NumberTestCase): void {
     return expect(toWords(input as ValidMoney)).toBe(expected)
 }
@@ -130,3 +75,58 @@ describe('toMaybeWords', () => {
             expect(toMaybeWords(v)).toBe(undefined)
         ))
 })
+
+const specificationTestData = [
+    { input: 0, expected: 'zero dollars' },
+    { input: 0.12, expected: 'twelve cents' },
+    { input: 10.55, expected: 'ten dollars and fifty five cents' },
+    { input: 120, expected: 'one hundred and twenty dollars' },
+]
+
+const testDataForValuesWithDollarsOnly = [
+    { input: 3, expected: 'three dollars' },
+    { input: 11, expected: 'eleven dollars' },
+    { input: 40, expected: 'forty dollars' },
+    { input: 97, expected: 'ninety seven dollars' },
+    { input: 400, expected: 'four hundred dollars' },
+    { input: 512, expected: 'five hundred and twelve dollars' },
+    { input: 720, expected: 'seven hundred and twenty dollars' },
+]
+
+const testDataForValuesWithCentsOnly = [
+    { input: 0.6, expected: 'sixty cents' },
+    { input: 0.13, expected: 'thirteen cents' },
+    { input: 0.04, expected: 'four cents' },
+    { input: 0.87, expected: 'eighty seven cents' },
+]
+
+const testDataForValuesWithDollarsAndCents = [
+    { input: 3.6, expected: 'three dollars and sixty cents' },
+    { input: 11.13, expected: 'eleven dollars and thirteen cents' },
+    { input: 40.04, expected: 'forty dollars and four cents' },
+    { input: 97.87, expected: 'ninety seven dollars and eighty seven cents' },
+    { input: 400.6, expected: 'four hundred dollars and sixty cents' },
+    {
+        input: 512.13,
+        expected: 'five hundred and twelve dollars and thirteen cents',
+    },
+    {
+        input: 720.67,
+        expected: 'seven hundred and twenty dollars and sixty seven cents',
+    },
+]
+
+const invalidInputTestData = [
+    'not a number',
+    '',
+    '0.45454',
+    '1000',
+    '5345798',
+    1000,
+    45455,
+    0.453,
+    34.7676,
+    NaN,
+    -Infinity,
+    Infinity,
+]
