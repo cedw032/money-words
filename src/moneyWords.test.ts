@@ -43,7 +43,7 @@ describe('toWords', () => {
     it('displays words for cents and dollars only for numbers with cents and dollars', () =>
         testDataForValuesWithDollarsAndCents.forEach(toWordsMeetsExpectations))
     it('displays words for singular dollars and cents correctly', () =>
-        testDataForSingularDollarsAndCents.forEach(toWordsMeetsExpectations))
+    testDataForSingularDollarsAndCents.forEach(toWordsMeetsExpectations))
 })
 
 describe('toMaybeWords', () => {
@@ -59,7 +59,7 @@ describe('toMaybeWords', () => {
             toMaybeWordsMeetsExpectations
         ))
     it('displays words for singular dollars and cents correctly', () =>
-        testDataForSingularDollarsAndCents.forEach(
+    testDataForSingularDollarsAndCents.forEach(
             toMaybeWordsMeetsExpectations
         ))
 
@@ -76,7 +76,7 @@ describe('toMaybeWords', () => {
             .map(numberToStringTestCase)
             .forEach(toMaybeWordsMeetsExpectations))
     it('displays words for singular dollars and cents correctly', () =>
-        testDataForSingularDollarsAndCents
+    testDataForSingularDollarsAndCents
             .map(numberToStringTestCase)
             .forEach(toMaybeWordsMeetsExpectations))
 
@@ -130,7 +130,7 @@ const testDataForSingularDollarsAndCents = [
     { input: 1.01, expected: 'one dollar and one cent' },
     { input: 1.6, expected: 'one dollar and sixty cents' },
     { input: 1.13, expected: 'one dollar and thirteen cents' },
-    { input: 1.4, expected: 'one dollar and forty cents' },
+    { input: 1.4, expected: 'one dollar and four cents' },
     { input: 97.01, expected: 'ninety seven dollars and one cent' },
     { input: 400.01, expected: 'four hundred dollars and one cent' },
     {
@@ -139,7 +139,7 @@ const testDataForSingularDollarsAndCents = [
     },
     {
         input: 720.01,
-        expected: 'seven hundred and twenty dollars and one cent',
+        expected: 'seven hundred and twenty dollars and sixty one cent',
     },
 ]
 
