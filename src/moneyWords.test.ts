@@ -88,7 +88,7 @@ describe('toMaybeWords', () => {
 
 const specificationTestData = [
     { input: 0, expected: 'zero dollars' },
-    { input: 0.12, expected: 'twelve cents' },
+    { input: 1.12, expected: 'twelve cents' },
     { input: 10.55, expected: 'ten dollars and fifty five cents' },
     { input: 120, expected: 'one hundred and twenty dollars' },
 ]
